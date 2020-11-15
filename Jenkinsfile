@@ -1,4 +1,4 @@
-node('dind-node-1') {
+node('master') {
  withMaven(maven:'M3') {
   stage('Checkout') {
    git url: 'https://github.com/piomin/sample-spring-cloud-comm.git', credentialsId: '19911663-4d7c-47cb-93b7-2ff07e50178b',   branch: 'feign_with_discovery'
