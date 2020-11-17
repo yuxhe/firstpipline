@@ -8,9 +8,9 @@ node('master') {
    dir('account-service') {
     sh 'mvn clean install'
    }
-   def pom = readMavenPom file:'pom.xml'
-   print pom.version
-   env.version = pom.version
+   //def pom = readMavenPom file:'pom.xml'
+   //print pom.version  pom.version
+   env.version = 3.0
    currentBuild.description = "Release: ${env.version}"
   }
 
