@@ -17,7 +17,7 @@ node('master') {
   stage('Image') {
    dir ('account-service') {
        sh '''
-           docker -H tcp://192.168.220.153:2375  build -t piomin/account-service:3.0   
+           docker -H tcp://192.168.220.153:2375  build -t piomin/account-service:3.0  . 
           '''
       //def app = docker.build "piomin/account-service:${env.version}"
 	  //docker build -t piomin/account-service:3.0
