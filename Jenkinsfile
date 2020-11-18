@@ -16,19 +16,19 @@ node('master') {
 
   stage('Image') {
    dir ('account-service') {
-       sh '''
-           docker -H tcp://192.168.220.153:2375  build -t piomin/account-service:3.0  . 
-          '''
-      //def app = docker.build "piomin/account-service:${env.version}"
+       //sh '''
+       //    docker -H tcp://192.168.220.153:2375  build -t piomin/account-service:3.0  . 
+       //   '''
+      def app = docker.build "piomin/account-service:${env.version}"
 	  //docker build -t piomin/account-service:3.0
       //app.push()
    }
   }
 
-  //stage ('Run') {
-  //  docker.image("piomin/account-service:${env.version}").run('-p 8091:8091 -m 256M -e EUREKA_DEFAULT_ZONE=http://discovery:8761/eureka -d --name account --network sample-spring-cloud-network')
+  stage ('Run') {
+    docker.image("piomin/account-service:${env.version}").run('-p 8091:8091 -m 256M -e EUREKA_DEFAULT_ZONE=http://discovery:8761/eureka -d --name account --network sample-spring-cloud-network')
    
-  //}
+  }
 
  }
 }
